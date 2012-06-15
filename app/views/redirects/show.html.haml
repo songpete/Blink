@@ -1,0 +1,27 @@
+.title
+  %strong Sorry, that link has no match in our database. <br><br>
+
+.body
+  %p You've reached redirects_controller show
+  - if @destination
+    Destination is:
+    = @destination
+  - else
+    No destination
+  %br
+
+  - if @path
+    Path variable is:
+    = @path
+  - else
+    No path value
+  %br
+
+  - if request.url
+    request is:
+    = request.url
+  - else
+    No request url
+
+%p 
+  = link_to 'home page', root_path

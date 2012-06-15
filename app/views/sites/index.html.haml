@@ -1,0 +1,23 @@
+%h1 Listing sites
+
+%table
+  %tr
+    %th Short path
+    %th Destination
+    %th Count
+    %th
+    %th
+    %th
+
+  - @sites.each do |site|
+    %tr
+      %td= site.short_path
+      %td= site.destination
+      %td= site.count
+      %td= link_to 'Show', site
+      %td= link_to 'Edit', edit_site_path(site)
+      %td= link_to 'Destroy', site, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Site', new_site_path

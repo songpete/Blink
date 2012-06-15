@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Short path:
+  = @site.short_path
+%p
+  %b Destination:
+  = @site.destination
+%p
+  %b Count:
+  = @site.count
+
+= link_to 'Edit', edit_site_path(@site)
+\|
+= link_to 'Back', sites_path

@@ -1,0 +1,22 @@
+.title
+  %strong Welcome. This is a link shortener site.<br><br>
+
+.body
+
+  - if user_signed_in?
+    %p 
+      You are signed in as:
+      = current_user
+  - else
+    %p
+      You are not signed in.
+
+  %p
+    To generate a shortened URL:
+
+= form_for @site do |f|
+  .field
+    = f.label :destination
+    = f.text_field :destination
+  .actions
+    = f.submit 'Shorten it!'
