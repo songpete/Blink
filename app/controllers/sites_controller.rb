@@ -18,7 +18,6 @@ class SitesController < ApplicationController
   def create
     @site = Site.new(params[:site])
     @site.set_short_path
-    @site.check_destination_format
 
     respond_to do |format|
       if @site.save
