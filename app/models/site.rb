@@ -12,4 +12,10 @@ class Site < ActiveRecord::Base
   def set_short_path
     self.short_path = Site.generate_string if self.short_path == nil
   end
+
+  def check_destination_format
+    pref = self.destination[0..3]
+    self.destination = "www." + self.destination unless pref == "www." || pref == "http"
+    self.destination = "http://" + self.destination unless pref == "http"
+  end
 end
