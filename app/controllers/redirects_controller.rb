@@ -7,8 +7,6 @@ class RedirectsController < ApplicationController
       @destination = @site.destination
       redirect_to @destination
     end
-
-    # redirect_to ("http://www.google.com")
   end
 
 end

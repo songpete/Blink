@@ -5,7 +5,7 @@ class SitesController < ApplicationController
 
   def show
     @site = Site.find(params[:id])
-    @short_path = @site.short_path
+    @short_path = request.host_with_port + '/' + @site.short_path
   end
 
   def new
