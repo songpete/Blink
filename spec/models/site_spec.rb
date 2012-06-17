@@ -32,21 +32,18 @@ describe Site do
   context "check_format method" do
     it "should add http:// if its missing" do
       @site = Site.new(:destination => "www.grass.org")
-      @site.check_destination_format
       @site.save
       @site.destination.should == "http://www.grass.org"
     end
 
     it "should add http://www. if its missing" do
       @site = Site.new(:destination => "grass.org")
-      @site.check_destination_format
       @site.save
       @site.destination.should == "http://www.grass.org"
     end
 
     it "should not modify destinations that have correct format" do
       @site = Site.new(:destination => "http://www.grass.org")
-      @site.check_destination_format
       @site.save
       @site.destination.should == "http://www.grass.org"
     end

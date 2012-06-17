@@ -46,6 +46,7 @@ describe SitesController do
         sign_in @usr
         post :create, :site => { 'destination' => 'www.somerandomsite.com' }
         @usr.sites.count.should == 1
+        @usr.sites.last.destination.should == "http://www.somerandomsite.com"
       end
     end
 
