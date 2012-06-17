@@ -9,6 +9,13 @@ describe Site do
     it { should validate_presence_of :destination }
   end
 
+  context "on creation" do
+    it "should have a zero count" do
+      @site = Fabricate(:site)
+      @site.count.should == 0
+    end
+  end
+
   context "string generator" do
     it "should create a random string" do
       @str = Site.generate_string
