@@ -41,6 +41,12 @@ describe SitesController do
         Site.count.should == (@pre_count + 1)
         Site.last.destination.should == 'http://www.reddit.com'
       end
+      it "should assign a created site to current_user if one is signed in" do
+        @usr = Fabricate(:user)
+        sign_in @usr
+        post :create, :site => { 'destination' => 'www.somerandomsite.com' }
+        @usr.sites.count.should == 1
+      end
     end
 
     describe "PUT update" do

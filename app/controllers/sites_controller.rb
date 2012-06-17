@@ -19,6 +19,7 @@ class SitesController < ApplicationController
   def create
     @site = Site.new(params[:site])
     @site.set_short_path
+    current_user.sites << @site if user_signed_in?
 
     respond_to do |format|
       if @site.save
