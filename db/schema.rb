@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120615041624) do
+ActiveRecord::Schema.define(:version => 20120617183450) do
 
   create_table "sites", :force => true do |t|
     t.string   "short_path"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20120615041624) do
     t.integer  "count"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

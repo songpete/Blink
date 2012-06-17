@@ -39,7 +39,7 @@ describe SitesController do
       it "creates a new site" do
         post :create, :site => { 'destination' => 'www.reddit.com' }
         Site.count.should == (@pre_count + 1)
-        Site.last.destination.should == 'www.reddit.com'
+        Site.last.destination.should == 'http://www.reddit.com'
       end
     end
 
@@ -49,7 +49,7 @@ describe SitesController do
       end
       it "updates site" do
         put :update, :id => @site.id.to_s, :site => { 'destination' => 'www.newsite.com' }
-        @site.reload.destination.should == 'www.newsite.com'
+        @site.reload.destination.should == 'http://www.newsite.com'
       end
     end
 

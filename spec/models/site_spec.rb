@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Site do
+  context "associations" do
+    it { should belong_to(:user) }
+  end
+
   context "string generator" do
     it "should create a random string" do
       @str = Site.generate_string

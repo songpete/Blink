@@ -1,8 +1,8 @@
 %p#notice= notice
 
 %p
-  %b Short path:
-  = @site.short_path
+  %b Your short link:
+  = @short_path.gsub!("\##{@short_path}", link_to("\##{@short_path}", @short_path.to_s))
 %p
   %b Destination:
   = @site.destination
