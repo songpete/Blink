@@ -1,5 +1,6 @@
 class Site < ActiveRecord::Base
   attr_accessible :count, :destination, :short_path
+  validates_presence_of :destination
 
   belongs_to :user
 

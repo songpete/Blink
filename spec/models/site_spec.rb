@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe Site do
+  it "can be created with a destination" do
+    Site.new({ destination: "www.somerandomurl.com" }).should be_valid
+  end
+
+  it "cannot be created without a destination" do
+    Site.new.should_not be_valid
+  end
+
   context "associations" do
     it { should belong_to(:user) }
   end
