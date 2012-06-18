@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120617183450) do
+ActiveRecord::Schema.define(:version => 20120618232836) do
 
   create_table "sites", :force => true do |t|
     t.string   "short_path"
     t.string   "destination"
-    t.integer  "count"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "count",       :default => 0, :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "user_id"
   end
 

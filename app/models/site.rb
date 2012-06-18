@@ -5,7 +5,6 @@ class Site < ActiveRecord::Base
   belongs_to :user
 
   before_save :check_destination_format
-  before_save :zero_count_if_nil
 
   CHARACTERS = %w(0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)
 
@@ -18,6 +17,12 @@ class Site < ActiveRecord::Base
   def set_short_path
     self.short_path = Site.generate_string if self.short_path == nil
   end
+  
+  def get_destination
+    self.count += 1
+    self.save
+    self.destination
+  end
 
   private #------------------------------------------------------------
 
@@ -27,7 +32,4 @@ class Site < ActiveRecord::Base
     self.destination = "http://" + self.destination unless pref == "http"
   end
 
-  def zero_count_if_nil
-    self.count = 0 if self.count == nil
-  end
 end
