@@ -2,7 +2,7 @@
 
 %p
   %b Your short link:
-  = @short_path
+  = link_to @short_path, @short_path
 %p
   %b Destination:
   = @site.destination
