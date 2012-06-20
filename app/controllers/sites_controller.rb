@@ -55,4 +55,8 @@ class SitesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def userlinks
+    @sites = current_user.sites
+  end
 end

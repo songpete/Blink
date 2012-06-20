@@ -10,6 +10,8 @@ Blink::Application.routes.draw do
   get '/about' => 'pages#about'
   get '/contact' => 'pages#contact'
 
+  get '/userlinks' => 'sites#userlinks'
+
   # Send unknown routes to redirects controller.
   match '*path' => 'redirects#show'
 
