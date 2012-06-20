@@ -1,10 +1,11 @@
 class SitesController < ApplicationController
+  before_filter :find_site, :only => [:show, :edit, :update, :destroy]
+
   def index
     @sites = Site.all
   end
 
   def show
-    @site = Site.find(params[:id])
     @short_path = request.host_with_port + '/' + @site.short_path
   end
 
@@ -13,7 +14,6 @@ class SitesController < ApplicationController
   end
 
   def edit
-    @site = Site.find(params[:id])
   end
 
   def create
@@ -33,8 +33,6 @@ class SitesController < ApplicationController
   end
 
   def update
-    @site = Site.find(params[:id])
-
     respond_to do |format|
       if @site.update_attributes(params[:site])
         format.html { redirect_to @site, notice: 'Site was successfully updated.' }
@@ -47,7 +45,6 @@ class SitesController < ApplicationController
   end
 
   def destroy
-    @site = Site.find(params[:id])
     @site.destroy
 
     respond_to do |format|
@@ -58,5 +55,13 @@ class SitesController < ApplicationController
 
   def userlinks
     @sites = current_user.sites
+  end
+
+  private
+
+  def find_site
+    @site = Site.find(params[:id])
+  rescue
+    render file: "public/404.html"
   end
 end
