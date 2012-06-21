@@ -1,5 +1,5 @@
 .title
-  %strong Welcome. This is a link shortener site.<br><br>
+  %strong Shorten your links in the <i>blink</i> of an eye.<br><br>
 
 .body
 
@@ -7,16 +7,12 @@
     %p 
       You are signed in as:
       = current_user
-  - else
-    %p
-      You are not signed in.
 
   %p
-    To generate a shortened URL:
+    To generate a shortened URL, enter the long address below:
 
 = form_for @site do |f|
   .field
-    = f.label :destination
     = f.text_field :destination
-  .actions
+  .action
     = f.submit 'Shorten it!'

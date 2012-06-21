@@ -1,23 +1,24 @@
-%h1 Listing sites
+%h1 Your Link Stash
 
-%table
+%br
+%table.table-striped.table-condensed
   %tr
+    %th Rank
     %th Short path
     %th Destination
-    %th Count
-    %th
+    %th Times used
     %th
     %th
 
-  - @sites.each do |site|
+  - @sites.each_with_index do |site, idx|
     %tr
+      %td= idx + 1
       %td= site.short_path
       %td= site.destination
       %td= site.count
       %td= link_to 'Show', site
-      %td= link_to 'Edit', edit_site_path(site)
       %td= link_to 'Destroy', site, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Site', new_site_path
+= link_to 'Make more links', root_path
