@@ -1,5 +1,5 @@
 .title
-  %strong Shorten your links in the <i>blink</i> of an eye.<br><br>
+  %strong Shorten your links in the <i>blink</i> of an eye.<br><br><br>
 
 .body
 
@@ -11,8 +11,20 @@
   %p
     To generate a shortened URL, enter the long address below:
 
-= form_for @site do |f|
-  .field
-    = f.text_field :destination
-  .action
-    = f.submit 'Shorten it!'
+#row-fluid
+  = form_for @site do |f|
+    .field
+      = f.text_field :destination
+    .action
+      = f.submit 'Shorten it!'
+
+%br
+%br
+%br
+%br
+
+- unless user_signed_in?
+  %center
+    Why not
+    = link_to " register?", new_user_registration_path
+    You'll be able to save your links if you do.
