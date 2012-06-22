@@ -18,8 +18,16 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.new(params[:site])
-    @site.set_short_path
-    current_user.sites << @site if user_signed_in?
+    @site.check_destination_format
+
+    if user_signed_in?
+      @exists = current_user.sites.find_by_destination(@site.destination)
+      current_user.sites << @site unless @exists
+    else
+      @exists = Site.anonymous_users.find_by_destination(@site.destination)
+    end
+
+    @site = @exists if @exists
 
     respond_to do |format|
       if @site.save

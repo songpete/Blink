@@ -4,8 +4,7 @@ class RedirectsController < ApplicationController
     @path = params[:path]
 
     if @site = Site.find_by_short_path(@path)
-      @destination = @site.get_destination
-      redirect_to @destination
+      redirect_to @site.get_destination
     end
   end
 

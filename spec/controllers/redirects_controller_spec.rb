@@ -6,7 +6,7 @@ describe RedirectsController do
       @site = Fabricate(:site)
     end
     it "should add 1 to count on redirect" do
-      get :show, { :path => "abcedf" }
+      get :show, { :path => 'abcdef' }
       @site.count.should == 1
     end
   end

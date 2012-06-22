@@ -48,6 +48,12 @@ describe SitesController do
         @usr.sites.count.should == 1
         @usr.sites.last.destination.should == "http://www.somerandomsite.com"
       end
+      it "should not create a new record if destination already exists" do
+        @site1 = Site.create!(:destination => 'www.wikipedia.com')
+        @first_count = Site.count
+        post :create, :site => { 'destination' => 'wikipedia.com' }
+        Site.count.should == @first_count
+      end
     end
 
     describe "PUT update" do
