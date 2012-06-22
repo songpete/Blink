@@ -9,6 +9,7 @@ gem 'pg'
 gem 'haml'
 gem 'haml-rails'
 gem 'devise'
+gem 'heroku'
 
 
 # Gems used only for assets and not required
@@ -31,6 +32,10 @@ group :development, :test do
   gem 'ffaker'
   gem 'shoulda-matchers'
   gem 'fabrication'
+end
+
+group :production do
+  gem 'thin'
 end
 
 # To use ActiveModel has_secure_password
