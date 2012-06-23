@@ -1,5 +1,6 @@
 class SitesController < ApplicationController
   before_filter :find_site, :only => [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:destroy, :edit]
 
   def index
     @sites = Site.all
@@ -18,7 +19,7 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.new(params[:site])
-    @site.check_destination_format
+    # return unless @site.check_destination_format
 
     if user_signed_in?
       @exists = current_user.sites.find_by_destination(@site.destination)
@@ -34,7 +35,7 @@ class SitesController < ApplicationController
         format.html { redirect_to @site, notice: 'Short link successfully created.' }
         format.json { render json: @site, status: :created, location: @site }
       else
-        format.html { render action: "new" }
+        format.html { render action: "bad_destination" }
         format.json { render json: @site.errors, status: :unprocessable_entity }
       end
     end
@@ -63,6 +64,9 @@ class SitesController < ApplicationController
 
   def userlinks
     @sites = current_user.sites
+  end
+
+  def bad_destination
   end
 
   private

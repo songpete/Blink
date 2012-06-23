@@ -1,7 +1,8 @@
 class RedirectsController < ApplicationController
   def show
-    @request_url = request.url
     @path = params[:path]
+    @request = request
+    @host_port = request.host_with_port
 
     if @site = Site.find_by_short_path(@path)
       redirect_to @site.get_destination

@@ -26,6 +26,7 @@ class Site < ActiveRecord::Base
   end
 
   def check_destination_format
+    return false unless self.destination.match(/.\.[a-zA-Z][a-z][A-Z]/)
     pref = self.destination[0..3]
     self.destination = "www." + self.destination unless pref == "www." || pref == "http"
     self.destination = "http://" + self.destination unless pref == "http"
