@@ -19,7 +19,7 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.new(params[:site])
-    # return unless @site.check_destination_format
+    @site.check_destination_format
 
     if user_signed_in?
       @exists = current_user.sites.find_by_destination(@site.destination)
