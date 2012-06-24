@@ -7,7 +7,6 @@ class SitesController < ApplicationController
   end
 
   def show
-    # @short_path = request.host_with_port + '/' + @site.short_path
     @short_path = "#{root_url}#{@site.short_path}"
   end
 

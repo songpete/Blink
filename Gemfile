@@ -33,6 +33,7 @@ group :development, :test do
   gem 'ffaker'
   gem 'shoulda-matchers'
   gem 'fabrication'
+  gem 'debugger'
 end
 
 group :production do

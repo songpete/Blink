@@ -7,7 +7,7 @@ describe RedirectsController do
     end
     it "should add 1 to count on redirect" do
       get :show, { :path => 'abcdef' }
-      @site.count.should == 1
+      @site.reload.count.should == 1
     end
   end
 

@@ -1,6 +1,8 @@
 class RedirectsController < ApplicationController
   def show
-    @path = params[:path].to_s
+    puts params.inspect
+    debugger
+    @path = params["path"].to_s
     @request = request
     @host_port = request.host_with_port
 
