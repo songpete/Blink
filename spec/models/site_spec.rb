@@ -16,23 +16,27 @@ describe Site do
     end
   end
 
-  context "string generator" do
-    it "should create a random string" do
-      @str = Site.generate_string
-      @str.should be_a_kind_of(String)
+  context "set_short_path on save" do
+    subject do
+      site = Site.new
+      site.destination = "www.amazon.com"
+      site
     end
 
     it "set_short_path method should assign short_path on save" do
-      @site = Site.new
-      @site.save
-      @site.short_path.should_not be_nil
+      subject.save
+      subject.short_path.should_not be_nil
+    end
+
+    it "should fill short_path with a random string" do
+      subject.save
+      subject.short_path.should be_a_kind_of(String)
     end
 
     it "should not modify an instance that already has a short_path" do
-      @site = Site.new
-      @site.short_path = "abcdef"
-      @site.save
-      @site.short_path.should == "abcdef"
+      subject.short_path = "abcdef"
+      subject.save
+      subject.short_path.should == "abcdef"
     end
   end
 
