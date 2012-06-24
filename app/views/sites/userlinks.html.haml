@@ -13,7 +13,7 @@
   - @sites.each_with_index do |site, idx|
     %tr
       %td= idx + 1
-      %td= site.short_path
+      %td= link_to root_url+site.short_path, root_url+site.short_path
       %td= site.destination
       %td= site.count
       %td= link_to 'Show', site
