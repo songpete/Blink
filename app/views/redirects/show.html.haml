@@ -3,32 +3,14 @@
 
 .body
   %p
-  - if @destination
-    Destination is:
-    = @destination
-  - else
-    No destination
-  %br
+    There might be a technical issue or the link may have been removed. Please try again later.
 
-  - if @path
-    Path variable is:
-    = @path
-  - else
-    No path value
-  %br
-
+  %p
   - if request.url
     request url is:
     = request.url
   - else
     No request url
-  %br
-
-  - if request.host_with_port
-    host with port is:
-    = request.host_with_port
-  - else
-    No host_with_port
   %br
 
 %p 
