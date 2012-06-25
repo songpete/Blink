@@ -7,37 +7,41 @@
   <%= csrf_meta_tags %>
 </head>
 
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" <%= link_to "Blink", root_path %></a>
-      <div class="nav-collapse">
-        <ul class="nav">
-          <li><%= link_to "Top links", sites_path %></li>
-        <% if user_signed_in? %>
-          <li><%= link_to 'Your Links', userlinks_path %></li>
-          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-        <% else %>
-          <li><%= link_to('Login', new_user_session_path) %></li>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
-        <% end %>
-          <li><%= link_to "About", about_path %></li>
-        </ul>
+<body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" <%= link_to "Blink", root_path %></a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><%= link_to "Top links", sites_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Your Links', userlinks_path %></li>
+            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+          <% else %>
+            <li><%= link_to('Login', new_user_session_path) %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <% end %>
+            <li><%= link_to "About", about_path %></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<body>
-  
-<div class="container">
-  <%= yield %>
-</div>
+
+  <div class="container">
+    <% flash.each do |key, value| %>
+      <div class="flash <%= key %>"><%= value %></div>
+    <% end %>
+
+    <%= yield %>
+  </div>
 
 </body>
 </html>

@@ -55,9 +55,10 @@ class SitesController < ApplicationController
 
   def destroy
     @site.destroy
+    flash[:success] = "Short link was successfully deleted."
 
     respond_to do |format|
-      format.html { redirect_to sites_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end

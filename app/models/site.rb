@@ -31,7 +31,7 @@ class Site < ActiveRecord::Base
     self.short_path = Site.generate_string if self.short_path == nil
   end
 
-  def self.generate_string(size=7)
+  def self.generate_string(size=6)
     str = (0...size).map { CHARACTERS[rand(62)] }.join
     Site.find_by_short_path(str) ? Site.generate_string(size) : str
   end

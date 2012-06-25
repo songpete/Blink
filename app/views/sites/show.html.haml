@@ -1,15 +1,12 @@
-%p#notice= notice
-
 %p
-  %b Your short link:
+%br
+  %b Shortened link:
   = link_to @short_path, @short_path
 %p
-  %b Destination:
+  %b Full URL address:
   = @site.destination
 %p
-  %b Count:
+  %b Short link use count:
   = @site.count
 
-= link_to 'Edit', edit_site_path(@site)
-\|
 = link_to 'Back', sites_path
