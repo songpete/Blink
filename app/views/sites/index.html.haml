@@ -6,8 +6,10 @@
     %th Rank
     %th Short path
     %th Destination
-    %th Times used
-    %th
+    %th Use count
+    %th View
+    - if current_user.try(:admin?)
+      %th Delete
 
   - @sites.each_with_index do |site, idx|
     %tr
@@ -16,6 +18,8 @@
       %td= site.destination
       %td= site.count
       %td= link_to 'Show', site
+      - if current_user.try(:admin?)
+        %td= link_to 'Delete', site, :confirm => 'Are you sure?', :method => :delete
 
 %br
 

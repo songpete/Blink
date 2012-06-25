@@ -7,8 +7,8 @@
     %th Short path
     %th Destination
     %th Times used
-    %th
-    %th
+    %th View
+    %th Delete
 
   - @sites.each_with_index do |site, idx|
     %tr
@@ -17,7 +17,7 @@
       %td= site.destination
       %td= site.count
       %td= link_to 'Show', site
-      %td= link_to 'Destroy', site, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Delete', site, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
