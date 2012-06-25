@@ -3,7 +3,9 @@ class SitesController < ApplicationController
   before_filter :authenticate_user!, :only => [:destroy, :edit]
 
   def index
-    @sites = Site.all
+    @sites = Site.page(params[:page]).per(20)
+    @page_count = params[:page].to_i
+    @page_count = (@page_count - 1) * 20 unless (@page_count == 0)
   end
 
   def show
@@ -64,7 +66,10 @@ class SitesController < ApplicationController
   end
 
   def userlinks
-    @sites = current_user.sites
+    # @sites = current_user.sites
+    @sites = current_user.sites.page(params[:page]).per(20)
+    @page_count = params[:page].to_i
+    @page_count = (@page_count - 1) * 20 unless (@page_count == 0)
   end
 
   private #-----------------------------------------------------------------

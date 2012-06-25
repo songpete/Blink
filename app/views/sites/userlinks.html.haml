@@ -1,6 +1,9 @@
 %h2 Your links, ranked by how often used
 
 %br
+
+= paginate @sites
+
 %table.table-striped.table-condensed
   %tr
     %th Rank
@@ -12,7 +15,7 @@
 
   - @sites.each_with_index do |site, idx|
     %tr
-      %td= idx + 1
+      %td= @page_count + idx + 1
       %td= link_to root_url+site.short_path, root_url+site.short_path
       %td= site.destination
       %td= site.count

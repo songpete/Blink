@@ -1,6 +1,9 @@
 %h2 Most Often Used Links
 
 %br
+
+= paginate @sites
+
 %table.table-striped.table-condensed
   %tr
     %th Rank
@@ -13,13 +16,14 @@
 
   - @sites.each_with_index do |site, idx|
     %tr
-      %td= idx + 1
+      %td= @page_count + idx + 1
       %td= link_to root_url+site.short_path, root_url+site.short_path
       %td= site.destination
       %td= site.count
       %td= link_to 'Show', site
       - if current_user.try(:admin?)
         %td= link_to 'Delete', site, :confirm => 'Are you sure?', :method => :delete
+
 
 %br
 
