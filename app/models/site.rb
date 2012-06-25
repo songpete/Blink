@@ -23,6 +23,7 @@ class Site < ActiveRecord::Base
     pref = self.destination[0..3]
     self.destination = "www." + self.destination unless pref == "www." || pref == "http"
     self.destination = "http://" + self.destination unless pref == "http"
+    return true
   end
 
   private #------------------------------------------------------------
