@@ -18,7 +18,7 @@
     %tr
       %td= @page_count + idx + 1
       %td= link_to root_url+site.short_path, root_url+site.short_path
-      %td= site.destination
+      %td= truncate(site.destination, :length => 60)
       %td= site.count
       %td= link_to 'Show', site
       - if current_user.try(:admin?)
