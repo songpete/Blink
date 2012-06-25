@@ -19,7 +19,7 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.new(params[:site])
-    @site.check_destination_format
+    render action: "edit" and return unless @site.check_destination_format
 
     if user_signed_in?
       @exists = current_user.sites.find_by_destination(@site.destination)
@@ -35,7 +35,7 @@ class SitesController < ApplicationController
         format.html { redirect_to @site, notice: 'Short link successfully created.' }
         format.json { render json: @site, status: :created, location: @site }
       else
-        format.html { render action: "bad_destination" }
+        format.html { render action: "edit" }
         format.json { render json: @site.errors, status: :unprocessable_entity }
       end
     end
@@ -66,10 +66,7 @@ class SitesController < ApplicationController
     @sites = current_user.sites
   end
 
-  def bad_destination
-  end
-
-  private
+  private #-----------------------------------------------------------------
 
   def find_site
     @site = Site.find(params[:id])
