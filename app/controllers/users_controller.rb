@@ -11,6 +11,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @total = @user.sites.sum(:count)
+    @max_site = @user.sites.first
   end
 
   def edit

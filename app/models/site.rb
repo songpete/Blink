@@ -26,6 +26,10 @@ class Site < ActiveRecord::Base
     return true
   end
 
+  def to_s
+    self.destination
+  end
+
   private #------------------------------------------------------------
 
   def set_short_path

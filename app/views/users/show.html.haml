@@ -3,24 +3,37 @@
     Hi,
     = @user
   %br
+
+  You registered :
+  = time_ago_in_words(@user.created_at)
+  ago
+
   %br
-  %p
-    You registered :
-    = time_ago_in_words(@user.created_at)
-    ago
+  %br
     
   %p
-    Total short links created:
-    = @user.sites.count
-  
-  %p
-    Total times all of your links have been used:
+    %i
+      Total short links you've created:
+      %b
+        = @user.sites.count
+        %br
+    %i
+      Total times all of your links have been used:
+      %b
+        = @total
     
-  %p
+  %br
+  %i
     Your most used link:
+    = @max_site
+    %br
   
-  %p
+  %i
     Times this link has been used:
+    %b
+      = @max_site.count
+  %br
+  %br
   
   %p
     To change your password:
