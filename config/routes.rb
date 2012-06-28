@@ -5,7 +5,10 @@ Blink::Application.routes.draw do
 
   root :to => 'pages#home'
 
-  resources :users
+  resources :users do
+    resources :sites, only: [:index]
+  end
+
   resources :sites
 
   # pages

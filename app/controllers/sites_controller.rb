@@ -3,7 +3,10 @@ class SitesController < ApplicationController
   before_filter :authenticate_user!, :only => [:destroy, :edit]
 
   def index
-    @sites = Site.page(params[:page]).per(20)
+    relation = Site
+    relation = relation.where(user_id: params[:user_id]) if params[:user_id]
+
+    @sites = relation.page(params[:page]).per(20)
     @page_count = params[:page].to_i
     @page_count = (@page_count - 1) * 20 unless (@page_count == 0)
   end
