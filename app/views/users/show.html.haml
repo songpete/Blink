@@ -1,0 +1,27 @@
+.container-fluid
+  %h3
+    Hi,
+    = @user
+  %br
+  %br
+  %p
+    You registered :
+    = time_ago_in_words(@user.created_at)
+    ago
+    
+  %p
+    Total short links created:
+    = @user.sites.count
+  
+  %p
+    Total times all of your links have been used:
+    
+  %p
+    Your most used link:
+  
+  %p
+    Times this link has been used:
+  
+  %p
+    To change your password:
+    = link_to "Change password", edit_user_registration_path

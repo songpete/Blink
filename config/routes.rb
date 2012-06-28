@@ -15,7 +15,5 @@ Blink::Application.routes.draw do
   get '/about' => 'pages#about'
   get '/contact' => 'pages#contact'
 
-  get '/userlinks' => 'sites#userlinks'
-
   match '*path' => 'redirects#show'
 end
