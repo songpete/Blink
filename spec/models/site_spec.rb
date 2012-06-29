@@ -16,6 +16,12 @@ describe Site do
     end
   end
 
+  context "fabricator" do
+    it "should create a valid site instance" do
+      Fabricate(:site).should be_valid
+    end
+  end
+
   context "set_short_path on save" do
     subject do
       site = Site.new
@@ -28,7 +34,7 @@ describe Site do
       subject.short_path.should_not be_nil
     end
 
-    it "should fill short_path with a random string" do
+    it "should assign short_path with a random string" do
       subject.save
       subject.short_path.should be_a_kind_of(String)
     end

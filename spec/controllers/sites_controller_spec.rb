@@ -51,7 +51,7 @@ describe SitesController do
       it "should not create a new record if destination already exists" do
         @site1 = Site.create!(:destination => 'www.wikipedia.com')
         @first_count = Site.count
-        post :create, :site => { 'destination' => 'wikipedia.com' }
+        post :create, :site => { 'destination' => 'www.wikipedia.com' }
         Site.count.should == @first_count
       end
     end
@@ -68,6 +68,8 @@ describe SitesController do
 
     describe "DELETE destroy" do
       before(:each) do
+        @user = Fabricate(:user)
+        sign_in @user
         @site = Fabricate(:site)
       end
       it "destroys a site" do

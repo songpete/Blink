@@ -5,6 +5,7 @@ class Site < ActiveRecord::Base
   belongs_to :user
 
   before_save :set_short_path
+  before_save :check_destination_format
 
   default_scope :order => 'count DESC'
   scope :anonymous_users, where(:user_id => nil)
