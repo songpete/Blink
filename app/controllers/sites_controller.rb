@@ -9,6 +9,7 @@ class SitesController < ApplicationController
     @sites = relation.page(params[:page]).per(20)
     @page_count = params[:page].to_i
     @page_count = (@page_count - 1) * 20 unless (@page_count == 0)
+    @heading = params[:user_id] ? "Your links, ranked by most used" : "All links, ranked by most used"
   end
 
   def show
