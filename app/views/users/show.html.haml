@@ -10,31 +10,38 @@
 
   %br
   %br
-    
-  %p
-    %i
-      Total short links you've created:
-      %b
-        = @user.sites.count
-        %br
-    %i
-      Total times all of your links have been used:
-      %b
-        = @total
-    
-  %br
-  %i
-    Your most used link:
-    = @max_site
+ 
+  - if @total > 0
+    %p
+      %i
+        Total short links you've created:
+        %b
+          = @user.sites.count
+          %br
+      %i
+        Total times all of your links have been used:
+        %b
+          = @total
+ 
     %br
-  
-  %i
-    Times this link has been used:
-    %b
-      = @max_site.count
-  %br
-  %br
-  
+    %i
+      Your most used link:
+      = @max_site
+      %br
+ 
+    %i
+      Times this link has been used:
+      %b
+        = @max_site.count
+    %br
+    %br
+
+  - else
+    You have not added any short links. To do so, click here:
+    = link_to "Add Link", root_path
+ 
+
+ 
   %p
     To change your password:
     = link_to "Change password", edit_user_registration_path
